@@ -1,126 +1,294 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang='ko'>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OHMEJA</title>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>OHMEJA — 나를 설명하는 다섯 가지 맛</title>
   <style>
-    :root { --bg:#0b0b10;--card:#10111b;--text:#f3f4ff;--muted:#b5b6cf;--accent:#ff3b6c; }
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(180deg,#07070d,#0f111d 60%,#07070d);color:var(--text);}
-    a{color:inherit;text-decoration:none;}
-    header{padding:72px 24px 36px;max-width:1040px;margin:0 auto;text-align:center;}
-    .logo{display:inline-flex;align-items:center;gap:10px;font-weight:900;font-size:20px;letter-spacing:1px;}
-    .logo span{color:var(--accent);}
-    h1{font-size:44px;margin:18px 0 12px;}
-    h1 em{font-style:normal;color:var(--accent);}
-    p.lead{margin:0 auto;max-width:720px;font-size:17px;line-height:1.6;color:var(--muted);}
-    .cta-row{margin-top:26px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
-    button.cta{border:0;border-radius:12px;padding:14px 18px;font-weight:700;cursor:pointer;}
-    .cta.primary{background:var(--accent);color:#10000b;}
-    .cta.ghost{background:rgba(255,255,255,.06);color:var(--text);}
-    section{max-width:1040px;margin:0 auto;padding:32px 24px;}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;align-items:start;}
-    .card{grid-column:span 6;background:linear-gradient(180deg,var(--card),rgba(16,17,27,.6));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;}
-    .card h2{margin:0 0 10px;font-size:18px;}
-    .card p{margin:0;color:var(--muted);line-height:1.7;font-size:15px;}
-    .tag{display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:var(--muted);font-size:13px;}
-    .tag b{color:var(--text);}
-    .steps{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;}
-    .step{flex:1 1 180px;min-width:180px;padding:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;}
-    .step .n{font-weight:900;color:var(--accent);display:inline-block;margin-bottom:6px;}
-    .list{margin-top:10px;padding-left:18px;color:var(--muted);line-height:1.7;}
-    .products{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;}
-    .product{flex:1 1 280px;min-width:280px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;}
-    .product h3{margin:0 0 8px;font-size:16px;}
-    .product .price{font-weight:800;color:var(--text);margin:0 0 6px;}
-    .product .desc{color:var(--muted);margin:0;line-height:1.6;font-size:14px;}
-    footer{max-width:1040px;margin:30px auto 50px;padding:20px 24px;border-top:1px solid rgba(255,255,255,.07);color:var(--muted);}
-    .small{font-size:13px;color:var(--muted);}
-    @media (max-width:860px){
-      h1{font-size:36px;}
-      .card{grid-column:span 12;}
+    :root {
+      --bg: #07070d;
+      --card: rgba(255, 255, 255, .06);
+      --cardSolid: #0b0b14;
+      --text: #f6f6ff;
+      --muted: rgba(246, 246, 255, .75);
+      --line: rgba(255, 255, 255, .10);
+      --accent: #ff2f5f;
+      --accent2: #7c5cff;
+      --shadow: 0 18px 60px rgba(0, 0, 0, .55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Inter, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(900px 520px at 10% 10%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(900px 520px at 90% 20%, rgba(255,47,95,.30), transparent 60%),
+        radial-gradient(1100px 620px at 50% 100%, rgba(255,47,95,.18), transparent 60%),
+        linear-gradient(180deg, #07070d, #0c0e1c);
+      color: var(--text);
+    }
+
+    a { color: inherit; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      padding: 72px 0 40px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 950;
+      font-size: 18px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .logo .m {
+      position: relative;
+      color: var(--accent);
+    }
+
+    .logo .m:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,47,95,.6), rgba(124,92,255,.6));
+      filter: blur(0.4px);
+      opacity: .8;
+    }
+
+    .heroTitle {
+      margin: 18px auto 10px;
+      font-size: 44px;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      max-width: 840px;
+    }
+
+    .heroTitle em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin: 0 auto;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .ctaRow {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-weight: 850;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .btnPrimary {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #0b0012;
+    }
+
+    .btnGhost {
+      background: rgba(255, 255, 255, .06);
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      grid-column: span 6;
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+
+    .card p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 14.5px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.11);
+      color: var(--muted);
+      font-size: 13px;
+    }
+2%, rgba(255,255,255,0.64)),
+        linear-gradient(180deg, rgba(245, 173, 168, 0.36), rgba(255,255,255,0.08));
+      color: var(--text);
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.04) inset;
+    }
+
+    .step p { margin: 0; }
+
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+
+    .list li + li { margin-top: 6px; }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .product {
+      grid-column: span 4;
+      border-radius: 18px;
+      padding: 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 22px 60px rgba(0,0,0,.56);
+    }
+
+    .product h3 { margin: 0 0 6px; font-size: 16px; }
+
+    .price { margin: 0 0 6px; font-weight: 950; color: var(--text); }
+
+    .product p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 14.2px; }
+
+    footer {
+      padding: 36px 0 70px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(900px 620px at 30% 0%, rgba(124,92,255,.15), transparent 60%),
+        radial-gradient(900px 620px at 70% 0%, rgba(255,47,95,.15), transparent 60%);
+    }
+
+    footer .logo { justify-content: flex-start; }
+
+    .small { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+
+    .hint {
+      margin: 12px 0 0;
+      font-size: 12px;
+      color: rgba(246,246,255,.6);
+    }
+
+    @media (max-width: 980px) {
+      .heroTitle { font-size: 38px; }
+      .grid { grid-template-columns: repeat(12, 1fr); }
+      .card { grid-column: span 12; }
+      .products { grid-template-columns: repeat(12, 1fr); }
+      .product { grid-column: span 12; }
+      footer .logo { justify-content: center; }
+      footer { text-align: center; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">OH<span>ME</span>JA</div>
-    <h1>나를 설명하는 <em>다섯 가지 맛</em></h1>
-    <p class="lead">오미자는 다섯 가지 맛을 가진 열매. OHMEJA는 그 다섯 가지 맛을 당신을 설명하는 다섯 가지 키워드로 바꿉니다. 물처럼 가볍게, 나답게 진하게.</p>
-    <div class="cta-row">
-      <a href="#custom"><button class="cta primary">나의 5가지 키워드 만들기</button></a>
-      <a href="#products"><button class="cta ghost">Starter Kit 보기</button></a>
+    <div class='wrap'>
+      <div class='logo'>OH<span class='m'>ME</span>JA</div>
+      <div class='heroTitle'>나를 설명하는 <em>다섯 가지 맛</em></div>
+      <p class='lead'>오미자는 다섯 가지 맛을 가진 열매. OHMEJA는 그 다섯 가지 맛을 당신을 설명하는 다섯 가지 키워드로 바꿉니다. 물처럼 가볍게, 나답게 진하게.</p>
+      <div class='ctaRow'>
+        <a href='#custom'><button class='btn btnPrimary'>나의 5가지 키워드 만들기</button></a>
+        <a href='#products'><button class='btn btnGhost'>Starter Kit 보기</button></a>
+      </div>
+      <p class='hint'>* HTML 속 따옴표는 단/복수 따옴표 모두 허용되는 형태로, 화면 결과는 동일합니다.</p>
     </div>
   </header>
 
-  <section id="brand">
-    <div class="grid">
-      <div class="card">
-        <h2>브랜드 스토리</h2>
-        <p>OHMEJA는 오미자(五味子)의 의미를 그대로 가지고 옵니다. “다섯 가지 맛의 열매”처럼 사람도 하나의 맛으로 설명되지 않으니까요.</p>
-        <div class="tag"><b>메시지</b> “나는 여러 맛이 섞여 더 맛있다.”</div>
-      </div>
-      <div class="card">
-        <h2>제품 포맷</h2>
-        <p>과립 형태로 만든 오미자 음료를 정수물에 타서 마십니다. 특별한 순간이 아니라, 데일리 워터 루틴을 “나를 발견하는 시간”으로 바꿉니다.</p>
-        <ul class="list">
-          <li>정수물 + 과립 = 바로 마시는 드링크</li>
-          <li>낮은 보관 부담(작은 스틱/팩)</li>
-          <li>커스텀 스티커로 “나의 병” 완성</li>
-        </ul>
+  <section id='brand'>
+    <div class='wrap'>
+      <div class='grid'>
+        <div class='card'>
+          <h2>브랜드 스토리</h2>
+          <p>OHMEJA는 오미자(五味子)의 의미를 그대로 가지고 옵니다. ‘다섯 가지 맛의 열매’처럼 사람도 하나의 맛으로 설명되지 않으니까요.</p>
+          <div class='tag'><b>메시지</b> “나는 여러 맛이 섞여 더 맛있다.”</div>
+        </div>
+
+        <div class='card'>
+          <h2>제품 포맷</h2>
+          <p>과립 형태로 만든 오미자 음료를 정수물에 타서 마십니다. 특별한 순간이 아니라, 데일리 워터 루틴을 ‘나를 발견하는 시간’으로 바꿉니다.</p>
+          <ul class='list'>
+            <li>정수물 + 과립 = 바로 마시는 드링크</li>
+            <li>낮은 보관 부담(작은 스틱/팩)</li>
+            <li>커스텀 스티커로 ‘나의 병’ 완성</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="custom">
-    <h2>주문 & 커스텀 플로우</h2>
-    <p class="lead">고객이 입력한 5가지 키워드를 바탕으로 스티커를 생성형 AI로 생성하고, 병과 함께 배송합니다.</p>
+    .tag b { color: var(--text); }
 
-    <div class="steps">
-      <div class="step">
-        <div class="n">STEP 1</div>
-        <div>나를 설명하는 키워드 5개 입력</div>
-      </div>
-      <div class="step">
-        <div class="n">STEP 2</div>
-        <div>스티커 스타일 선택(미니멀/키치/빈티지…)</div>
-      </div>
-      <div class="step">
-        <div class="n">STEP 3</div>
-        <div>미리보기 3개 중 1개 선택</div>
-      </div>
-      <div class="step">
-        <div class="n">STEP 4</div>
-        <div>과립 음료 + 병 + 스티커 배송</div>
-      </div>
-    </div>
-  </section>
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 14px;
+    }
 
-  <section id="products">
-    <h2>라인업</h2>
-    <div class="products">
-      <div class="product">
-        <h3>Starter Kit</h3>
-        <p class="price">첫 주문</p>
-        <p class="desc">오미자 과립 + 커스텀 병 + AI 스티커 + My Five 카드</p>
-      </div>
-      <div class="product">
-        <h3>Refill Pack</h3>
-        <p class="price">재구매</p>
-        <p class="desc">병 없이 과립만, 더 가볍게 루틴 유지</p>
-      </div>
-      <div class="product">
-        <h3>Gift Kit</h3>
-        <p class="price">선물</p>
-        <p class="desc">친구/동료의 키워드로 만드는 세상에 하나뿐인 오미자 선물</p>
-      </div>
-    </div>
-  </section>
+    .step {
+      flex: 1 1 220px;
+      min-width: 220px;
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(0,0,0,.20);
+      border: 1px solid rgba(255,255,255,.10);
+    }
 
-  <footer>
-    <div class="logo">OH<span>ME</span>JA</div>
-    <p class="small">© 2026 OHMEJA. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    .step .n { font-weight: 950; color: var(--accent); margin-bottom: 6px; }
